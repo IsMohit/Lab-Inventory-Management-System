@@ -172,10 +172,4 @@ Password: user1234
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
 ## ✨ Created by [Mohit Khambekar](https://github.com/IsMohit)
