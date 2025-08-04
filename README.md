@@ -127,7 +127,6 @@ Password: user1234
 
 ## 📸 Screenshots
 
-> _Add actual screenshots or GIFs to your repo and update links below._
 
 ### 💻 Dashboard  
 ![Dashboard Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/dashboard.gif)
