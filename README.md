@@ -136,7 +136,7 @@ Password: user1234
 ![Inventory Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/inventory.gif)
 
 ### 🔔 Notifications  
-![Notifications Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/notifications.gif)
+![Notifications Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/notification.gif)
 
 ### 📱 Fully Responsive Design  
 ![Mobile View](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/mobile-view.gif)
