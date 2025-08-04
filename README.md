@@ -130,16 +130,16 @@ Password: user1234
 > _Add actual screenshots or GIFs to your repo and update links below._
 
 ### 💻 Dashboard  
-![Dashboard Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/dashboard.png)
+![Dashboard Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/dashboard.gif)
 
 ### 🧾 Inventory List  
-![Inventory Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/inventory.png)
+![Inventory Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/inventory.png)
 
 ### 🔔 Notifications  
-![Notifications Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/notifications.gif)
+![Notifications Screenshot](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/notifications.gif)
 
 ### 📱 Fully Responsive Design  
-![Mobile View](https://github.com/IsMohit/Lab-Inventory-Management-System/mobile-view.gif)
+![Mobile View](https://github.com/IsMohit/Lab-Inventory-Management-System/blob/main/mobile-view.gif)
 
 ---
 
