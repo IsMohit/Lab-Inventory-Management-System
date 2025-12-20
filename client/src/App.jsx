@@ -7,9 +7,11 @@ import NotificationsView from "./pages/NotificationView";
 import ComponentModal from "./components/ComponentModal";
 import TransactionModal from "./components/TransactionModal";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import UserManagement from "./pages/UserManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import { sampleComponents } from "./constants/sampleComponents";
 import { categories } from "./constants/categories";
 import { enhancedChartData, pieColors } from "./constants/chartData";
@@ -19,6 +21,7 @@ import "./index.css";
 export const LIMS = () => {
   // const [currentView, setCurrentView] = useState("dashboard");
   const location1 = useLocation();
+  const { user: authUser } = useAuth();
 const pathToView = {
   "/": "dashboard",
   "/inventory": "inventory",
@@ -30,10 +33,19 @@ const [currentView, setCurrentView] = useState(pathToView[location1.pathname] ||
   const [components, setComponents] = useState(sampleComponents);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [user, setUser] = useState({
-    name: "Dr. Sarah Chen",
-    role: "Lab Administrator",
-    avatar: "SC",
+  const [user, setUser] = useState(() => {
+    // Initialize with auth user if available, otherwise use default
+    if (authUser) {
+      return {
+        ...authUser,
+        avatar: (authUser.name || "User").split(" ").map(n => n[0]).join("").toUpperCase()
+      };
+    }
+    return {
+      name: "Dr. Sarah Chen",
+      role: "Lab Administrator",
+      avatar: "SC",
+    };
   });
   const [notifications, setNotifications] = useState([]);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -45,6 +57,17 @@ const [currentView, setCurrentView] = useState(pathToView[location1.pathname] ||
   const [transactionComponent, setTransactionComponent] = useState(null);
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/register";
+
+  // Update user when authUser changes
+  useEffect(() => {
+    if (authUser) {
+      setUser({
+        ...authUser,
+        avatar: (authUser.name || "User").split(" ").map(n => n[0]).join("").toUpperCase()
+      });
+    }
+  }, [authUser]);
 
   useEffect(() => {
     const newNotifications = [];
@@ -228,7 +251,7 @@ const [currentView, setCurrentView] = useState(pathToView[location1.pathname] ||
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {!isLoginPage && (
+      {!isLoginPage && !isRegisterPage && (
   <Header 
     user={user} 
     dashboardMetrics={dashboardMetrics} 
@@ -241,10 +264,11 @@ const [currentView, setCurrentView] = useState(pathToView[location1.pathname] ||
 )}
 
 
-      <div className={!isLoginPage ? "flex" : ""}>
-        <main className={!isLoginPage ? "w-full max-w-7xl mx-auto mt-16 p-4" : "w-full"}>
+      <div className={!isLoginPage && !isRegisterPage ? "flex" : ""}>
+        <main className={!isLoginPage && !isRegisterPage ? "w-full max-w-7xl mx-auto mt-16 p-4" : "w-full"}>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             {/* <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} /> */}
             <Route path="/" element={
               <DashboardView
