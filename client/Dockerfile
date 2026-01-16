@@ -1,15 +1,18 @@
-FROM node:20-slim
-
+FROM node:20-slim AS builder
 WORKDIR /app
 
-# Copy pre-built dist folder
-COPY dist/ ./dist/
+COPY package*.json ./
+RUN npm ci
 
-# Install serve to run the app
+COPY . .
+RUN npm run build
+
+FROM node:20-slim
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+
 RUN npm install -g serve
 
-# Expose port
 EXPOSE 80
-
-# Serve the application
 CMD ["serve", "-s", "dist", "-l", "80"]
